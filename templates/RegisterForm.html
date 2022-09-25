@@ -1,0 +1,25 @@
+{% extends "patterns/base.html" %}
+
+{% block content %}
+	<center>
+		<h1>Sign Up</h1>
+		<form method="POST" action="{{ url_for('signup') }}">
+			{{ form.csrf_token }}
+
+			{{ form.username.label }}<br>
+			{{ form.username }}<br>
+
+			{% for error in form.username.errors %}
+				<ul><li style="color: red;">{{ error }}</li></ul>
+			{% endfor %}
+
+			{{ form.password.label}}<br>
+			{{ form.password }}<br>
+
+			{% for error in form.password.errors %}
+				<ul><li style="color: red;">{{ error }}</li></ul>
+			{% endfor %}
+			<input type="submit" value="Submit">
+		</form>
+	</center>
+{% endblock %}
